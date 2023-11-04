@@ -2,12 +2,16 @@ import { cardsImage } from "../../constant";
 import "./MainGame.scss";
 import { useEffect, useState } from "react";
 import SingleCard from "../../components/SingleCard";
+import Footer from "../../components/Footer";
 
 export default function MainGame() {
     const [cards, setCards] = useState([]);
     const [choiceOne, setChoiceOne] = useState(null);
     const [choiceTwo, setChoiceTwo] = useState(null);
+    // eslint-disable-next-line
     let [turn, setTurn] = useState(0);
+    let [score, setScore] = useState(0);
+    const [disabled, setDisable] = useState(false);
 
     const handleShuffle = () => {
         const shuffledCards = [...cardsImage, ...cardsImage]
@@ -18,14 +22,16 @@ export default function MainGame() {
                 }
             })
             .sort(() => Math.random() - 0.5)
-            setCards(shuffledCards)
-            // updateTurn()
+            setCards(shuffledCards);
+            setTurn(0);
+            setScore(0);
     }
 
     useEffect(() => {
         if (choiceOne && choiceTwo) {
+            setDisable(true);
             if (choiceOne.src === choiceTwo.src) {
-                console.log("matched");
+                setScore(score => score+=1)
                 setCards(prevCards => {
                     let newCards = prevCards.map(card => {
                         if (card.src === choiceOne.src) {
@@ -35,28 +41,24 @@ export default function MainGame() {
                     })
                     return newCards
                 })
-                updateTurn()
+                updateTurn();
             } else {
-                console.log("not matched");
                 setTimeout(() => {
                     updateTurn()
-                }, 500)
-                // updateTurn()
+                }, 600)
             }
         }
     }, [choiceOne, choiceTwo])
-    
-    console.log(cards);
 
     const handleClickCard = (cardItem) => {
-        // console.log(cardItem);
         choiceOne ? setChoiceTwo(cardItem) : setChoiceOne(cardItem);
     }
 
     const updateTurn = () => {
-        setTurn(turn+=1);
+        setTurn(turn => turn+=1);
         setChoiceOne(null)
         setChoiceTwo(null)
+        setDisable(false);
     }
 
     return (
@@ -70,11 +72,16 @@ export default function MainGame() {
                 <div className="grid">
                     {cards.length > 0 && 
                         cards.map(cardItem => 
-                                <SingleCard key={cardItem.id} cardItem={cardItem} handleClickCard={handleClickCard} flipped={cardItem === choiceOne || cardItem === choiceTwo || cardItem.matched}/>
-                            )
-                    }
+                                <SingleCard key={cardItem.id} cardItem={cardItem} handleClickCard={handleClickCard} flipped={cardItem === choiceOne || cardItem === choiceTwo || cardItem.matched} disabled={disabled}/>
+                        )}
                 </div>
+                {cards.length > 0 && 
+                    <div className="score">
+                        <span>Score: {score}</span>
+                    </div>
+                }
             </div>
+            <Footer />
         </>
     )
 }
