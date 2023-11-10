@@ -107,16 +107,6 @@
     font-weight: 700;
 }
 
-.time-out {
-    color: white;
-    // margin-top: 20px;
-}
-
-.you-win {
-    color: white;
-    // margin-top: 20px;
-}
-
 .footer {
     width: 100%;
     display: flex;
@@ -145,20 +135,16 @@
 }
 
 @media screen and (max-width: 560px) {
+    .main-game {
+        margin-top: 50px;
+    }
+
     .card-item {
         width: 65px;
     }
 
     .grid {
         grid-gap: 7px;
-    }
-
-    .time-out {
-        margin-top: 50px;
-    }
-
-    .you-win {
-        margin-top: 30px;
     }
 }
 
@@ -169,6 +155,7 @@
 
     .grid {
         grid-gap: 5px;
+        margin-top: 30px;
     }
 
     .main-game {

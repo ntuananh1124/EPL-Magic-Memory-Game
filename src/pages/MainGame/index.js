@@ -62,14 +62,14 @@ export default function MainGame() {
             setTime(prevTime => prevTime - 1)
         }, 1000)
         if (time <= 0) {
-            clearInterval(timeRef.current)
-            setDisable(true)
             alert("TIME OUT!")
+            setDisable(true)
+            clearInterval(timeRef.current)
         }
         if (cards.length > 0 && score === cards.length / 2) {
-            clearInterval(timeRef.current)
-            setDisable(true);
             alert("YOU WIN!")
+            setDisable(true);
+            clearInterval(timeRef.current)
         }
         return () => clearInterval(timeRef.current);
     }, [time])
@@ -108,8 +108,6 @@ export default function MainGame() {
                             <span>Score: {score}</span>
                         </div>
                     </div>
-                    {/* {time === 0 && <h1 className="time-out">TIME OUT!</h1>}
-                    {score === cards.length / 2 && <h1 className="you-win">YOU WIN!</h1>} */}
                 </>
                 }
             </div>
