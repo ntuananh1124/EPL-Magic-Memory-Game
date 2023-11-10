@@ -8,7 +8,7 @@ export default function MainGame() {
     const [cards, setCards] = useState([]);
     const [choiceOne, setChoiceOne] = useState(null);
     const [choiceTwo, setChoiceTwo] = useState(null);
-    let [time, setTime] = useState(59);
+    let [time, setTime] = useState();
     let timeArray = String(time).split("").map((num) => Number(num))
     const timeRef = useRef()
     // eslint-disable-next-line
@@ -64,10 +64,12 @@ export default function MainGame() {
         if (time <= 0) {
             clearInterval(timeRef.current)
             setDisable(true)
+            alert("TIME OUT!")
         }
-        if (score === cards.length / 2) {
+        if (cards.length > 0 && score === cards.length / 2) {
             clearInterval(timeRef.current)
             setDisable(true);
+            alert("YOU WIN!")
         }
         return () => clearInterval(timeRef.current);
     }, [time])
@@ -106,8 +108,8 @@ export default function MainGame() {
                             <span>Score: {score}</span>
                         </div>
                     </div>
-                    {time === 0 && <h1 className="time-out">TIME OUT!</h1>}
-                    {score === cards.length / 2 && <h1 className="you-win">YOU WIN!</h1>}
+                    {/* {time === 0 && <h1 className="time-out">TIME OUT!</h1>}
+                    {score === cards.length / 2 && <h1 className="you-win">YOU WIN!</h1>} */}
                 </>
                 }
             </div>

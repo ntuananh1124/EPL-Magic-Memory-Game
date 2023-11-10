@@ -109,12 +109,12 @@
 
 .time-out {
     color: white;
-    margin-top: 50px;
+    // margin-top: 20px;
 }
 
 .you-win {
     color: white;
-    margin-top: 30px;
+    // margin-top: 20px;
 }
 
 .footer {
@@ -151,6 +151,14 @@
 
     .grid {
         grid-gap: 7px;
+    }
+
+    .time-out {
+        margin-top: 50px;
+    }
+
+    .you-win {
+        margin-top: 30px;
     }
 }
 
