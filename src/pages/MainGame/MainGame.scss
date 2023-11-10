@@ -75,7 +75,6 @@
         
         .front {
             transform: rotateY(0deg);
-            // transition: 0.3s ease;
         }
     }
 
@@ -99,20 +98,31 @@
     }
 }
 
-.score {
-    color: white;
+.time-score {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
+    color: white;
     font-weight: 700;
+}
+
+.time-out {
+    color: white;
+    margin-top: 50px;
+}
+
+.you-win {
+    color: white;
+    margin-top: 30px;
 }
 
 .footer {
     width: 100%;
-    // text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 55px;
-    // line-height: 70px;
     position: absolute;
     bottom: 0;
     background-color: aliceblue;
