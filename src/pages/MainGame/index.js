@@ -53,11 +53,6 @@ export default function MainGame() {
                     updateTurn()
                 }, 600)
             }
-            if (cards.length > 0 && score === cards.length / 2) {
-                alert("YOU WIN!")
-                setDisable(true);
-                clearInterval(timeRef.current)
-            }
         }
     }, [choiceOne, choiceTwo])
 
@@ -69,6 +64,11 @@ export default function MainGame() {
         if (time <= 0) {
             alert("TIME OUT!")
             setDisable(true)
+            clearInterval(timeRef.current)
+        }
+        if (cards.length > 0 && score === cards.length / 2) {
+            alert("YOU WIN!")
+            setDisable(true);
             clearInterval(timeRef.current)
         }
         return () => clearInterval(timeRef.current);
