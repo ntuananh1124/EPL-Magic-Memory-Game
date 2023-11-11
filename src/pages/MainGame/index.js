@@ -53,6 +53,11 @@ export default function MainGame() {
                     updateTurn()
                 }, 600)
             }
+            if (cards.length > 0 && score === cards.length / 2) {
+                alert("YOU WIN!")
+                setDisable(true);
+                clearInterval(timeRef.current)
+            }
         }
     }, [choiceOne, choiceTwo])
 
@@ -66,11 +71,6 @@ export default function MainGame() {
             setDisable(true)
             clearInterval(timeRef.current)
         }
-        if (cards.length > 0 && score === cards.length / 2) {
-            alert("YOU WIN!")
-            setDisable(true);
-            clearInterval(timeRef.current)
-        }
         return () => clearInterval(timeRef.current);
     }, [time])
 
@@ -79,7 +79,7 @@ export default function MainGame() {
     }
 
     const updateTurn = () => {
-        setTurn(turn => turn+=1);
+        setTurn(turn => turn + 1);
         setChoiceOne(null)
         setChoiceTwo(null)
         setDisable(false);
