@@ -109,7 +109,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-    margin-bottom: 25px;
     color: white;
     font-weight: 700;
 }
@@ -177,7 +176,7 @@
 
 @media screen and (max-width: 414px) {
     .card-item {
-        width: 50px;
+        width: 52.5px;
     }
 
     .grid {
