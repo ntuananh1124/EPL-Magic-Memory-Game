@@ -171,12 +171,12 @@
 
 @media screen and (max-width: 382px) {
     .card-item {
-        width: 50px;
+        width: 45px;
     }
 
     .grid {
         grid-gap: 5px;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .main-game {
@@ -184,12 +184,21 @@
             &-button {
                 font-size: 80%;
                 margin-top: 35px;
+                row-gap: 10px !important;
 
                 button {
                     padding: 6px 9px;
-                    font-size: 15px;
+                    font-size: 13px;
                 }
             }
+        }
+    }
+
+    .footer {
+        height: 40px;
+        margin-top: 30px;
+        .epl-img {
+            width: 70px;
         }
     }
 }
