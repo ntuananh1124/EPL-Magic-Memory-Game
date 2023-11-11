@@ -87,31 +87,32 @@ export default function MainGame() {
 
     return (
         <>
-            <div className="main-game">
-                <div className="main-game__name-button" style={cards.length > 0 ? {rowGap: 15} : {}}>
-                    <h1 className="main-game__name">EPL Magic Memory</h1>
-                    {cards.length === 0 && <i className="note">*Click here to create new game</i>}
-                    <button onClick={handleShuffle}>{cards.length > 0 ? "Restart" : "Create New Game"}</button>
-                </div>
-                {cards.length > 0 && 
-                <>
-                    <div className="grid">
-                        {cards.map(cardItem => 
-                                    <SingleCard key={cardItem.id} cardItem={cardItem} handleClickCard={handleClickCard} flipped={cardItem === choiceOne || cardItem === choiceTwo || cardItem.matched} disabled={disabled}/>
-                            )}
+            <div className="main">
+                <div className="main-game">
+                    <div className="main-game__name-button" style={cards.length > 0 ? {rowGap: 15} : {}}>
+                        <h1 className="main-game__name">EPL Magic Memory</h1>
+                        {cards.length === 0 && <i className="note">*Click here to create new game</i>}
+                        <button onClick={handleShuffle}>{cards.length > 0 ? "Restart" : "Create New Game"}</button>
                     </div>
-                    <div className="time-score">
-                        <div className="time">
-                            <span>Time: 00:{timeArray.length === 2 ? `${time}` : `0${time}`}</span>
+                    {cards.length > 0 && 
+                    <>
+                        <div className="grid">
+                            {cards.map(cardItem => 
+                                        <SingleCard key={cardItem.id} cardItem={cardItem} handleClickCard={handleClickCard} flipped={cardItem === choiceOne || cardItem === choiceTwo || cardItem.matched} disabled={disabled}/>
+                                )}
                         </div>
-                        <div className="score">
-                            <span>Score: {score}</span>
+                        <div className="time-score">
+                            <div className="time">
+                                <span>Time: 00:{timeArray.length === 2 ? `${time}` : `0${time}`}</span>
+                            </div>
+                            <div className="score">
+                                <span>Score: {score}</span>
+                            </div>
                         </div>
+                    </>}
                     </div>
-                </>
-                }
+                <Footer />
             </div>
-            <Footer />
         </>
     )
 }
